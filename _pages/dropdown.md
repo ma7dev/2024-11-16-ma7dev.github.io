@@ -6,9 +6,9 @@ nav_order: 6
 dropdown: true
 children: 
     - title: Lists
-      permalink: /lists/
+      permalink: /lists
     - title: Setup
-      permalink: /setup/
+      permalink: /setup
     - title: Stack
-      permalink: /stack/
+      permalink: /stack
 ---
