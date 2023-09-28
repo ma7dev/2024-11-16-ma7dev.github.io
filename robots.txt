@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://ma7dev.github.io/sitemap.xml
+Sitemap: https://ma7.dev/sitemap.xml
