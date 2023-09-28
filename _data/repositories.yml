@@ -1,12 +1,11 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - ma7dev
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - ma7dev/deep-learning-project-template
+  - ma7dev/OnlySudo
+  - ma7dev/pyreqpp
+  - ma7dev/LaTeX-Templates
+  - ma7dev/cookiecutter-pytorch-lightning
+  - ma7dev/ttorch
+  - ma7dev/cookiecutter-pytorch-lightning-cluster
