@@ -10,6 +10,8 @@ tags: [notion, obsidian, okular, mathpix, insync]
 disqus_comments: true
 related_posts: true
 datatable: true
+toc:
+  sidebar: left
 ---
 
 In this post, I will share the tools that I use, my general thoughts about the setup, and an example of how I would go about writing a note.

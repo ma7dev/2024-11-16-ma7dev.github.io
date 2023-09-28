@@ -10,6 +10,8 @@ tags: [learn, tools]
 disqus_comments: true
 related_posts: true
 datatable: true
+toc:
+  sidebar: left
 ---
 ## Requirements
 - iPad

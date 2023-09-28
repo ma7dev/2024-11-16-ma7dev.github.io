@@ -10,6 +10,8 @@ tags: [linux, freebsd, windows]
 disqus_comments: true
 related_posts: true
 datatable: true
+toc:
+  sidebar: left
 ---
 ## Introduction
 
