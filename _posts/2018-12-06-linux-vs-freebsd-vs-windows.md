@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "Linux vs. FreeBSD vs. Windows"
 date: 2018-12-06 08:57:00-0400
 description: In this post, I will share the tools that I use, my general thoughts about the setup, and an example of how I would go about writing a note.

@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "How I Learn"
 date: 2022-03-21 08:57:00-0400
 description: In this post, I will share the tools that I use, my general thoughts about the setup, and an example of how I would go about writing a note.

@@ -162,7 +162,9 @@ disqus_shortname: ma7dev # put your disqus shortname
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
   - name: substack.com
-    rss_url: https://sudomaze.substack.com/feed
+    rss_url: https://ma7dev.substack.com/feed
+  - name: substack.com
+    rss_url: https://ma7xyz.substack.com/feed
 
 # -----------------------------------------------------------------------------
 # Collections

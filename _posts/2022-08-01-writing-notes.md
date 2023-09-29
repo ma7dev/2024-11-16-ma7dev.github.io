@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title: "How I write my notes [Part 1]"
 date: 2022-08-01 08:57:00-0400
 description: In this post, I will share the tools that I use, my general thoughts about the setup, and an example of how I would go about writing a note.
