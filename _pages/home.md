@@ -23,7 +23,7 @@ social: true  # includes social icons at the bottom of the page
 
 I am currently working as a Senior Machine Learning Engineer @ [Malaa Technologies](https://malaa.tech).
 
-Check [my blogs](/blog/) where different kinds of content:
+Check [my blogs](/blog/) where I have different kinds of content:
 - Technical content: Machine Learning, Software Engineering, and any related topics.
 - Personal content: Life, experience, thoughts, learning, and other random topics from my personal experience.
 
