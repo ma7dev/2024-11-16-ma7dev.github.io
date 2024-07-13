@@ -13,9 +13,42 @@ pagination:
     before: 1 # The number of links before the current page
     after: 3  # The number of links after the current page
 ---
-
-<h1>Working on it...</h1>
-<img src="https://i.giphy.com/media/JIX9t2j0ZTN9S/giphy.webp">
+<p>I am using multiple platforms for different audiences and content types. Here is a list of platforms where I publish content:</p>
+<ul>
+    <li>
+        <p>
+            <i class="fa-brands fa-medium" style="color: #00ab6c;"></i>
+            <a href="https://medium.com/@ma7dev">medium.com</a>:
+            long-form articles on career development, personal growth, and opinion pieces.
+        </p>
+    </li>
+    <li>
+        <p>
+            <i class="fa-brands fa-hashnode" style="color: #0091ff;"></i>
+            <a href="https://ma7dev.hashnode.dev/">hashnode.com</a>:
+            long-form articles on software development, AI, and technology.
+        </p>
+    </li>
+    <li>
+        <p>
+            <i class="fa-brands fa-dev" style="color: #0a0a0a;"></i>
+            <a href="https://dev.to/ma7dev">dev.to</a>:
+            short-form techincal articles & discussions and Today I Learned (TIL) posts.
+        </p>
+    </li>
+    {%- comment -%} <li>
+        <p>
+            <svg 
+                style="width:10px; height:auto"
+                xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 448 511.471"
+            >
+                <path fill="#FF681A" d="M0 0h448v62.804H0V0zm0 229.083h448v282.388L223.954 385.808 0 511.471V229.083zm0-114.542h448v62.804H0v-62.804z"/>
+            </svg>
+            <a href="https://ma7dev.substack.com/">substack.com</a>:
+            <span>Pending...</span>
+        </p>
+    </li> {%- endcomment -%}
+</ul>
 
 <div class="post">
 
@@ -132,7 +165,23 @@ pagination:
         {{ read_time }} min read &nbsp; &middot; &nbsp;
         {{ post.date | date: '%B %-d, %Y' }}
         {%- if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
+            &nbsp; &middot; &nbsp;
+            <!-- use external_source icon and  hover show post.external_source -->
+            {%- if post.external_source == 'substack.com' %}     
+                <svg
+                    title="{{ post.external_source }}"  
+                    style="width:10px; height:auto"
+                    xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 448 511.471"
+                >
+                    <path fill="#FF681A" d="M0 0h448v62.804H0V0zm0 229.083h448v282.388L223.954 385.808 0 511.471V229.083zm0-114.542h448v62.804H0v-62.804z"/>
+                </svg>
+            {%- elsif post.external_source == 'hashnode.com' %}
+                <i title="{{ post.external_source }}" class="fa-brands fa-hashnode" style="color: #0091ff;hover:"></i>
+            {%- elsif post.external_source == 'medium.com' %}
+                <i  title="{{ post.external_source }}" class="fa-brands fa-medium" style="color: #00ab6c;"></i>
+            {%- elsif post.external_source == 'dev.to' %}
+                <i  title="{{ post.external_source }}" class="fa-brands fa-dev" style="color: #0a0a0a;"></i>
+            {%- endif %}
         {%- endif %}
       </p>
       <p class="post-tags">

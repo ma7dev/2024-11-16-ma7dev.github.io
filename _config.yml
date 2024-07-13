@@ -6,7 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Mazen
 middle_name: ""
 last_name: Alotaibi
-email: sudomaze@gmail.com
+email: mazen.ota@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Thinking out loud.
 footer_text: >
@@ -81,7 +81,7 @@ scholar_userid: LWT136oAAAAJ # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
 whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 orcid_id: # your ORCID ID
-medium_username: # your Medium username
+medium_username: ma7dev # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
 lattes_id: # your ID on Lattes (Brazilian Lattes CV)
@@ -94,8 +94,8 @@ keybase_username: # your keybase user name
 wikidata_id: # your wikidata id
 wikipedia_id: # your wikipedia id (Case sensitive)
 dblp_url: # your DBLP profile url
-stackoverflow_id: # your stackoverflow id
-kaggle_id:  # your kaggle id
+stackoverflow_id: 5862635 # your stackoverflow id
+kaggle_id:  ma7dev # your kaggle id
 lastfm_id: # your lastfm id
 spotify_id: # your spotify id
 pinterest_id: # your pinterest id
@@ -154,17 +154,37 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname: sudomaze # put your disqus shortname
+disqus_shortname: ma7dev # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  # - name: substack.com
-  #   rss_url: https://ma7dev.substack.com/feed
-  # - name: substack.com
-  #   rss_url: https://ma7xyz.substack.com/feed
+  # long-form career, opinionated, and general content
+  # 1. Career Development (e.g. How to Get Promoted)
+  # 2. Personal Development (e.g. How to Stay Motivated)
+  # 3. Opinions (e.g. Why AI is the Future)
+  - name: medium.com
+    rss_url: https://medium.com/feed/@ma7dev
+  # in-depth technical content 
+  # 1. Practical Guides (e.g. How to Build a Recommender System)
+  # 2. Long-Form How-To's (e.g. How to Build a Chatbot in detail) 
+  # 3. Deep Dives (e.g. How Transformers Work)
+  - name: hashnode.com
+    rss_url: https://ma7dev.hashnode.dev/rss.xml
+  # short-form techincal content
+  # 1. summaries of hashnode.com articles  (e.g. Summary of How to Build a Recommender System)
+  # 2. Today I Learned (e.g. You Can Use ChatGPT to summarize articles)
+  # 3. Short-Form How-To's (e.g. How to Build a Chatbot in 5 Minutes)
+  - name: dev.to
+    rss_url: https://dev.to/feed/ma7dev
+  # newsletter-style content
+  # 1. Weekly Roundup (e.g. Top AI News of the Week)
+  # 2. Series (e.g. AI Explained)
+  # 3. AI Research Summaries (e.g. Top AI Papers of the Month)
+  - name: substack.com
+    rss_url: https://ma7dev.substack.com/feed
 
 # -----------------------------------------------------------------------------
 # Collections
