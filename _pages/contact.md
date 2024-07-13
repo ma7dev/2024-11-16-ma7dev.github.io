@@ -3,7 +3,7 @@ layout: page
 title: Contact
 permalink: /contact
 nav: true
-nav_order: 2
+nav_order: 4
 ---
 
 ## Follow Me

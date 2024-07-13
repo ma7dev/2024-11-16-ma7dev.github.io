@@ -23,7 +23,7 @@ module ExternalPosts
     def fetch_and_process_feed(src, site)
       puts "Fetching external posts from #{src['name']}:"
       
-      user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.125 Safari/537.36"
       headers = {
         "User-Agent" => user_agent,
         "Accept" => "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.7",
@@ -34,19 +34,36 @@ module ExternalPosts
 
       begin
         response = HTTParty.get(src['rss_url'], headers: headers)
+        # p "Response code: #{response.code}"
         if response.code == 200
-          feed = RSS::Parser.parse(response.body, false)
-            if feed.nil?
-              xml = HTTParty.get(src['rss_url']).body 
+          feed = nil
+          begin
+            feed = RSS::Parser.parse(response.body, false)
+          rescue => e
+            puts "Error parsing feed from #{src['name']} using RSS Parser: #{e.message}"
+            feed = nil
+          end
+          # p "Feed: #{feed.nil?}"
+          if feed.nil?
+            xml = HTTParty.get(src['rss_url']).body 
+            # p "XML: #{xml.nil?}"
+            begin
               feed = Feedjira.parse(xml)
-              if feed.nil?
-                  puts "Error: Unable to parse feed from #{src['name']}"
-              else
-                  process_feed_enteries(feed, src, site)
-              end
-            else
-                process_feed_items(feed, src, site)
+            rescue => e
+              puts "Error parsing feed from #{src['name']} using Feedjira Parser: #{e.message}"
+              feed = nil
             end
+            # p "Feed: #{feed.nil?}"
+            if feed.nil?
+                puts "Error: Unable to parse feed from #{src['name']}"
+            else
+                # p "Feed: #{feed.entries}"
+                process_feed_enteries(feed, src, site)
+            end
+          else
+              # p "Feed: #{feed.items}"
+              process_feed_items(feed, src, site)
+          end
         else
           puts "Error: Received status code #{response.code} for #{src['name']}"
         end
@@ -57,7 +74,7 @@ module ExternalPosts
 
     def process_feed_items(feed, src, site)
         feed.items.each do |item|
-            puts "...fetching #{item.link}"
+            puts "...fetching (items) #{item.link}"
             slug = item.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
             path = site.in_source_dir("_posts/#{slug}.md")
             doc = Jekyll::Document.new(
@@ -75,7 +92,7 @@ module ExternalPosts
     end
     def process_feed_enteries(feed, src, site)
       feed.entries.each do |e|
-        p "...fetching #{e.url}"
+        p "...fetching (entries) #{e.url}"
         slug = e.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
         path = site.in_source_dir("_posts/#{slug}.md")
         doc = Jekyll::Document.new(

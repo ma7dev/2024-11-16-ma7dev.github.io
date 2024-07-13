@@ -12,6 +12,8 @@ pagination:
   trail:
     before: 1 # The number of links before the current page
     after: 3  # The number of links after the current page
+nav: true
+nav_order: 3
 ---
 <p>I am using multiple platforms for different audiences and content types. Here is a list of platforms where I publish content:</p>
 <ul>
@@ -160,7 +162,6 @@ pagination:
           <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
         {% endif %}
       </h3>
-      <p>{{ post.description }}</p>
       <p class="post-meta">
         {{ read_time }} min read &nbsp; &middot; &nbsp;
         {{ post.date | date: '%B %-d, %Y' }}

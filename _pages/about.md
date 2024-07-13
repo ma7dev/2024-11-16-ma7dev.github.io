@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about
 nav: true
-nav_order: 2
+nav_order: 1
 ---
 
 ## Background
