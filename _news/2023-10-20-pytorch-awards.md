@@ -1,11 +1,9 @@
 ---
 layout: post
 title: ":tada: Won <b>PyTorch Ambassador Awards</b>"
-date: 2023-10-20 16:11:00-0400
 inline: false
 related_posts: false
 ---
-
 
 <div style="position:relative;overflow:hidden;padding-top:56.25%;">
   <iframe 
