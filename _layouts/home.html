@@ -41,25 +41,44 @@ layout: default
             {{ content }}
           </div>
             <br><br><br>
-          <!-- News -->
-          {% if page.news and site.announcements.enabled -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">News</a></h2>
+          
+          
+          
+          <!-- 
+          Latest News 
+          -->
+          {% if page.news and site.displays.news.enabled -%}
+            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">Latest News</a></h2>
             {%- include news.html limit=true %}
           {%- endif %}
             <br><br><br>
-          <!-- Latest posts -->
+
+
+
+
+          <!-- 
+          Latest posts 
+          -->
           {% if page.latest_posts -%}
             <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">Latest Posts</a></h2>
-            {%- include latest_posts.html %}
+            {%- include posts.html order_by='latest' limit=true %}
           {%- endif %}
             <br><br><br>
-          <!-- Selected papers -->
+
+
+          <!-- 
+          Selected papers 
+          -->
           {% if page.selected_papers -%}
             <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">Selected Publications</a></h2>
             {%- include selected_papers.html %}
           {%- endif %}
          <br><br><br>
-          <!-- Social -->
+
+
+          <!-- 
+          Social 
+          -->
           {%- if page.social %}
             <div class="social">
               <div class="contact-icons">

@@ -1,0 +1,82 @@
+
+<div class="news">
+    {% if site.posts != blank -%}
+        {%- assign posts_size = site.posts | size -%}
+        <div class="table-responsive" {% if site.displays.posts.scrollable and posts_size > 3 %}style="max-height: 60vw"{% endif %}>
+            <table class="table table-sm table-borderless">
+                {%- assign posts = site.posts -%}
+
+                {% if site.displays.posts.limit %}
+                    {% assign posts_limit = site.displays.posts.limit %}
+                {% else %}
+                    {% assign posts_limit = posts_size %}
+                {% endif %}
+
+                <!-- based on order_by -->
+                {% if include.order_by == 'latest' %}
+                    {%- assign posts = posts | sort: 'date' | reverse -%}
+                {% elsif include.order_by == 'tags' %}
+                    <!-- group by tags -->
+                    {%- assign posts = posts | group_by_exp: 'post', 'post.tags' -%}
+                    {%- assign posts = posts | sort: 'name' -%}
+                {% elsif include.order_by == 'category' %}
+                    <!-- group by category -->
+                    {%- assign posts = posts | group_by_exp: 'post', 'post.category' -%}
+                    {%- assign posts = posts | sort: 'name' -%}
+                {% elsif include.order_by == 'source' %}
+                    <!-- group by category -->
+                    {%- assign posts = posts | group_by_exp: 'post', 'post.external_source' -%}
+                    {%- assign posts = posts | sort: 'name' -%}
+                {% else %}
+                    {%- assign posts = posts | sort: 'date' -%}
+                {% endif %}
+                {% for item in posts limit: posts_limit %}
+                <tr>
+                    <th scope="row">{{ item.date | date: "%b %-d, %Y" }}</th>
+                    <td>
+                    {%- if item.external_source %}
+                        <!-- use external_source icon and  hover show item.external_source -->
+                        {%- if item.external_source == 'substack.com' %}     
+                            <svg
+                                title="{{ item.external_source }}"  
+                                style="width:10px; height:auto"
+                                xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 448 511.471"
+                            >
+                                <path fill="#FF681A" d="M0 0h448v62.804H0V0zm0 229.083h448v282.388L223.954 385.808 0 511.471V229.083zm0-114.542h448v62.804H0v-62.804z"/>
+                            </svg>&nbsp;
+                        {%- elsif item.external_source == 'hashnode.com' %}
+                            <i title="{{ item.external_source }}" class="fa-brands fa-hashnode" style="color: #0091ff;hover:"></i>
+                        {%- elsif item.external_source == 'medium.com' %}
+                            <i  title="{{ item.external_source }}" class="fa-brands fa-medium" style="color: #00ab6c;"></i>&nbsp;
+                        {%- elsif item.external_source == 'dev.to' %}
+                            <i  title="{{ item.external_source }}" class="fa-brands fa-dev" style="color: #0a0a0a;"></i>&nbsp;
+                        {%- endif %}
+                    {% endif %}
+                    {% if item.redirect == blank %}
+                        <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                    {% elsif item.redirect contains '://' %}
+                        <a class="news-title" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+                        <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    {% else %}
+                        <a class="news-title" href="{{ item.redirect | relative_url }}">{{ item.title }}</a>
+                    {% endif %}
+                    </td>
+                </tr>
+                {%- endfor %}
+
+                {% if include.limit and site.displays.posts.limit and posts_size > site.displays.posts.limit %}
+                <tr>
+                    <th scope="row"></th>
+                    <td colspan="2">
+                        <a href="/blog/">Read more...</a>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    {%- else -%}
+        <p>No posts so far...</p>
+    {%- endif %}
+</div>

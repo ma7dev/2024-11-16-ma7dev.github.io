@@ -3,53 +3,7 @@ layout: default
 ---
 
 <div class="post">
-
-  <header class="post-header">
     <h1 class="post-title"> <i class="fas fa-calendar fa-sm"></i> {{ page.date | date: "%Y" }} </h1>
     <p class="post-description"> an archive of posts from this year </p>
-  </header>
-
-  <article>
-    <div class="table-responsive">
-      <table class="table table-sm table-borderless">
-        {% for post in page.posts %}
-        <tr>
-          <th scope="row">{{ post.date | date: "%b %-d, %Y" }}</th>
-          <td>
-            {% if post.redirect == blank %}
-                <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                {% elsif post.redirect contains '://' %}
-                <a class="post-title" href="{{ post.redirect }}" target="_blank">{{ post.title }}</a>
-                <svg width="2rem" height="2rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-                {% else %}
-                <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-            {% endif %}
-            {%- if post.external_source %}
-                &nbsp; &middot; &nbsp;
-                <!-- use external_source icon and  hover show post.external_source -->
-                {%- if post.external_source == 'substack.com' %}     
-                    <svg
-                        title="{{ post.external_source }}"  
-                        style="width:10px; height:auto"
-                        xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 448 511.471"
-                    >
-                        <path fill="#FF681A" d="M0 0h448v62.804H0V0zm0 229.083h448v282.388L223.954 385.808 0 511.471V229.083zm0-114.542h448v62.804H0v-62.804z"/>
-                    </svg>
-                {%- elsif post.external_source == 'hashnode.com' %}
-                    <i title="{{ post.external_source }}" class="fa-brands fa-hashnode" style="color: #0091ff;hover:"></i>
-                {%- elsif post.external_source == 'medium.com' %}
-                    <i  title="{{ post.external_source }}" class="fa-brands fa-medium" style="color: #00ab6c;"></i>
-                {%- elsif post.external_source == 'dev.to' %}
-                    <i  title="{{ post.external_source }}" class="fa-brands fa-dev" style="color: #0a0a0a;"></i>
-                {%- endif %}
-            {% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-      </table>
-    </div>
-  </article>
-
+    {%- include posts.html order_by='date' %}
 </div>
