@@ -1,6 +1,7 @@
 ---
 layout: post
-title: ":tada: Won <b>PyTorch Ambassador Awards</b>"
+title: "Won <b>PyTorch Ambassador Awards 2023</b>"
+type: award
 inline: false
 related_posts: false
 ---
